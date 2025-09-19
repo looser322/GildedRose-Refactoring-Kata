@@ -5,7 +5,7 @@ import com.gildedrose.calculator.sellin.SellInCalculator;
 
 public class SulfurasSellInCalculator implements SellInCalculator {
     @Override
-    public int calculate(Item item) {
+    public int calculateSellIn(Item item) {
         return item.sellIn;
     }
 }

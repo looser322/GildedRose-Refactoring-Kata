@@ -3,14 +3,22 @@ package com.gildedrose.calculator.quality.impl;
 import com.gildedrose.Item;
 import com.gildedrose.calculator.quality.QualityCalculator;
 
-public class BackstagePassQualityCalculator implements QualityCalculator {
-    @Override
-    public int calculate(Item item, int updatedSellIn) {
-        if (updatedSellIn < 0) return 0;
+import static com.gildedrose.config.Constant.*;
 
-        int qualityIncrease = 1 + (item.sellIn < 11 ? 1 : 0) + (item.sellIn < 6 ? 1 : 0);
+public class BackstagePassQualityCalculator implements QualityCalculator {
+
+    private static final int SELL_IN_THRESHOLD_FOR_DOUBLE_INCREASE = 11;
+    private static final int SELL_IN_THRESHOLD_FOR_TRIPLE_INCREASE = 6;
+
+    @Override
+    public int calculateQuality(Item item, int updatedSellIn) {
+        if (updatedSellIn < SELLIN_EXPIRATION_THRESHOLD) return ITEM_MIN_QUALITY;
+
+        int qualityIncrease = 1
+            + (item.sellIn < SELL_IN_THRESHOLD_FOR_DOUBLE_INCREASE ? 1 : 0)
+            + (item.sellIn < SELL_IN_THRESHOLD_FOR_TRIPLE_INCREASE ? 1 : 0);
         int newQuality = item.quality + qualityIncrease;
-        
-        return Math.min(50, newQuality);
+
+        return Math.min(ITEM_MAX_QUALITY, newQuality);
     }
 }

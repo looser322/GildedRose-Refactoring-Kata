@@ -5,7 +5,7 @@ import com.gildedrose.calculator.quality.QualityCalculator;
 
 public class SulfurasQualityCalculator implements QualityCalculator {
     @Override
-    public int calculate(Item item, int updatedSellIn) {
+    public int calculateQuality(Item item, int updatedSellIn) {
         return item.quality;
     }
 }

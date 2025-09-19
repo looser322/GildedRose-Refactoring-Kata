@@ -3,5 +3,5 @@ package com.gildedrose.calculator.sellin;
 import com.gildedrose.Item;
 
 public interface SellInCalculator {
-    int calculate(Item item);
+    int calculateSellIn(Item item);
 }

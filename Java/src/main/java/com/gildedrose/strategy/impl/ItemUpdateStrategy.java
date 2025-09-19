@@ -17,8 +17,8 @@ public class ItemUpdateStrategy implements UpdateStrategy {
 
     @Override
     public void update(Item item) {
-        int updatedSellIn = this.sellinCalculator.calculate(item);
-        int updatedQuality = this.qualityCalculator.calculate(item, updatedSellIn);
+        int updatedSellIn = this.sellinCalculator.calculateSellIn(item);
+        int updatedQuality = this.qualityCalculator.calculateQuality(item, updatedSellIn);
         item.sellIn = updatedSellIn;
         item.quality = updatedQuality;
     }
